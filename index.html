@@ -1,123 +1,2073 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Webpack</title>
-<link href="assets/css/app.css" rel="stylesheet"></head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>Layout Travelask</title>
+  <!-- Стили -->
+  <style>
 
+    /*Стили тестовой страницы*/
+    body {
+      margin: 0;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .content {
+      flex-grow: 1;
+    }
+
+    header, footer {
+      flex-shrink: 0;
+    }
+
+    /*Стили header*/
+
+    .alt-header {
+      position: relative;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      height: 90px;
+      width: 100%;
+      background: #fff;
+      -webkit-transition: background-color .2s;
+      transition: background-color .2s;
+      color: #000;
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header {
+        height: 65px;
+      }
+    }
+
+    .alt-header.is-open,
+    .alt-header.is-open.is-fixed {
+      background-color: #fff;
+    }
+
+    .alt-header.is-open .alt-header__drop-btn,
+    .alt-header.is-open.is-fixed .alt-header__drop-btn {
+      background-color: #fde283;
+      border-color: #fde283;
+      color: #000;
+    }
+
+    .alt-header.is-open .alt-header__logo-img,
+    .alt-header.is-open.is-fixed .alt-header__logo-img {
+      color: #000;
+    }
+
+    .alt-header.is-open .alt-header__logo-title,
+    .alt-header.is-open.is-fixed .alt-header__logo-title {
+      color: #000;
+    }
+
+    .alt-header.is-open .alt-header__signin,
+    .alt-header.is-open.is-fixed .alt-header__signin {
+      border-color: #ff4641;
+      color: #000;
+    }
+
+    .alt-header.is-open .alt-header__signin:hover,
+    .alt-header.is-open .alt-header__signin .no-touch,
+    .alt-header.is-open.is-fixed .alt-header__signin:hover,
+    .alt-header.is-open.is-fixed .alt-header__signin {
+      color: #fff;
+    }
+
+    .alt-header.is-open .alt-header__action,
+    .alt-header.is-open.is-fixed .alt-header__action {
+      color: #000;
+    }
+
+    .alt-header.is-open .alt-header__drop,
+    .alt-header.is-open.is-fixed .alt-header__drop {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 81;
+    }
+
+    .alt-header.alt-header--fixed {
+      position: fixed;
+      top: -90px;
+      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      z-index: 20;
+      -webkit-transition: .3s transform;
+      transition: .3s transform;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header.is-open,
+      .alt-header.is-open.is-fixed {
+        position: fixed;
+        z-index: 10
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .alt-header.alt-header--fixed {
+        top: -55px;
+      }
+    }
+
+    .alt-header.is-fixed {
+      background-color: #fff;
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+    }
+
+    .alt-header .alt-header__logo-img {
+      color: #000;
+    }
+
+    .alt-header .alt-header__logo-title {
+      color: #000;
+    }
+
+    .alt-header .alt-header__drop-btn {
+      color: #000;
+      border-color: #000;
+    }
+
+    .alt-header .alt-header__signin {
+      border-color: #ff4641;
+      color: #000;
+    }
+
+    .alt-header .alt-header__signin:hover,
+    .alt-header .alt-header__signin {
+      color: #fff;
+    }
+
+    .alt-header .alt-header__action {
+      color: #000;
+    }
+
+    .alt-header a {
+      text-decoration: none;
+    }
+
+    .alt-header ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .alt-header__logo {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      position: relative;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header__logo {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+    }
+
+    .alt-header__logo-img {
+      display: block;
+      padding-right: 20px;
+      margin-right: 15px;
+      border-right: 1px solid #EFEADF;
+      color: #fff;
+      height: 35px;
+      -webkit-transition: .2s color;
+      transition: .2s color;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header__logo-img {
+        padding-right: 0;
+        margin-right: 0;
+        border-right: none;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header__logo-img {
+        width: 117px;
+        height: auto;
+      }
+    }
+
+    .alt-header__logo-title {
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      -webkit-transition: .2s color;
+      transition: .2s color;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header__logo-title {
+        font-size: 11px;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header__logo-title {
+        font-size: 8px;
+      }
+    }
+
+    .alt-header__wrap {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      .alt-header__wrap {
+        position: relative;
+      }
+    }
+
+    .alt-header__right {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .alt-header__drop {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      pointer-events: none;
+      background-color: #fff;
+      -webkit-transition: .2s opacity;
+      transition: .2s opacity;
+      -webkit-box-shadow: 0 30px 30px rgba(31, 21, 1, 0.1);
+      box-shadow: 0 30px 30px rgba(31, 21, 1, 0.1);
+      border-top: 1px solid #EFECE4;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header__drop {
+        position: fixed;
+        top: 90px;
+        height: calc(100% - 90px);
+        z-index: 5;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        overflow-y: auto;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header__drop {
+        top: 65px;
+        height: calc(100% - 65px);
+      }
+    }
+
+    .alt-header__drop-btn {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding: 10px 20px;
+      margin-right: 34px;
+      font-size: 17px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      color: #fff;
+      background-color: #F9F7F2;
+      border-radius: 50px;
+      -webkit-transition: .2s border-color, .2s color, .2s background-color;
+      transition: .2s border-color, .2s color, .2s background-color;
+    }
+
+    .alt-header__drop-btn:hover {
+      background-color: #fde283;
+
+    }
+
+    @media screen and (max-width: 768px) {
+      .alt-header__drop-btn {
+        margin-right: 24px;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header__drop-btn {
+        border-radius: 50%;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header__drop-btn span {
+        display: none;
+      }
+    }
+
+    .alt-header__arrow {
+      margin-left: 6px;
+    }
+
+    .alt-header__icon-services {
+      margin-right: 13px;
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header__icon-services {
+        margin-right: 0;
+      }
+    }
+
+    .alt-header__drop-icon,
+    .alt-header__signin-mobile {
+      display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      .alt-header__drop-icon,
+      .alt-header__signin-mobile {
+        display: inline-block;
+        position: relative;
+        width: 36px;
+        height: 36px;
+        background-color: #fff;
+        border-radius: 50%;
+        color: #000;
+      }
+
+      .alt-header__drop-icon svg,
+      .alt-header__signin-mobile svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 15px;
+        height: 14px;
+      }
+    }
+
+    .alt-header__drop-list {
+      position: absolute;
+      top: calc(100% + 15px);
+      left: 50%;
+      width: 320px;
+      margin-top: 8px;
+      opacity: 0;
+      visibility: hidden;
+      -webkit-box-shadow: 0px 20px 50px rgba(31, 21, 1, 0.2);
+      box-shadow: 0px 20px 50px rgba(31, 21, 1, 0.2);
+      -webkit-transform: translateX(-50%) translateY(5px);
+      transform: translateX(-50%) translateY(5px);
+      -webkit-transition: 0.3s opacity, 0s visibility 0.3s, 0.3s -webkit-transform;
+      transition: 0.3s opacity, 0s visibility 0.3s, 0.3s -webkit-transform;
+      transition: 0.3s opacity, 0.3s transform, 0s visibility 0.3s;
+      transition: 0.3s opacity, 0.3s transform, 0s visibility 0.3s, 0.3s -webkit-transform;
+    }
+
+    @media screen and (max-width: 768px) {
+      .alt-header__drop-list {
+        -webkit-transform: none;
+        transform: none;
+        left: auto;
+        right: -46px;
+      }
+    }
+
+    @media screen and (max-width: 320px) {
+      .alt-header__drop-list {
+        right: -58px;
+      }
+    }
+
+    .alt-header__drop.is-open .alt-header__drop-list {
+      opacity: 1;
+      visibility: visible;
+      -webkit-transform: translateX(-50%) translateY(0);
+      transform: translateX(-50%) translateY(0);
+      -webkit-transition: 0.3s opacity, 0s visibility, 0.3s -webkit-transform;
+      transition: 0.3s opacity, 0s visibility, 0.3s -webkit-transform;
+      transition: 0.3s opacity, 0.3s transform, 0s visibility;
+      transition: 0.3s opacity, 0.3s transform, 0s visibility, 0.3s -webkit-transform;
+    }
+
+    @media screen and (max-width: 768px) {
+      .alt-header__drop.is-open .alt-header__drop-list {
+        -webkit-transform: none;
+        transform: none;
+      }
+    }
+
+    .alt-header__drop-list:before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      display: block;
+      width: 0;
+      height: 0;
+      margin-left: -8px;
+      border-style: solid;
+      border-width: 0 8px 8px 8px;
+      border-color: transparent transparent #ffffff transparent;
+    }
+
+    @media screen and (max-width: 768px) {
+      .alt-header__drop-list:before {
+        left: auto;
+        right: 56px;
+      }
+    }
+
+    @media screen and (max-width: 320px) {
+      .alt-header__drop-list:before {
+        right: 68px;
+      }
+    }
+
+    .alt-header__action {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      color: #fff;
+      font-size: 17px;
+      -webkit-transition: .2s color;
+      transition: .2s color;
+      margin-right: 28px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .alt-header__action {
+        margin-right: 17px;
+      }
+    }
+
+    .alt-header__action:last-child {
+      margin-right: 0;
+    }
+
+    .alt-header__action:hover {
+      color: #ff4641;
+    }
+
+    .alt-header__action svg {
+      margin-right: 10px;
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header__action svg {
+        margin-right: 0;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header__action span {
+        display: none;
+      }
+    }
+
+    .alt-header__signin {
+      border-color: #fff;
+      color: #fff;
+    }
+
+    .alt-header__signin:hover,
+    .alt-header__signin:focus {
+      border-color: #ff4641;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header__signin {
+        -webkit-box-ordinal-group: 1;
+        -webkit-order: 0;
+        -ms-flex-order: 0;
+        order: 0;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .alt-header__signin {
+        display: none;
+      }
+    }
+
+    .alt-header-drop {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      padding: 32px 0 38px;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header-drop {
+        padding: 21px 0 0;
+        min-height: 100%;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header-drop {
+        padding: 32px 0 14px;
+      }
+    }
+
+    .alt-header-drop__menus {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-flex: 1;
+      -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      margin-right: 35px;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header-drop__menus {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        margin-right: 0;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header-drop__menus {
+        margin-bottom: 17px;
+      }
+    }
+
+    .alt-header-drop__menu {
+      color: #000;
+      margin-right: 10px;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header-drop__menu {
+        margin-right: 0;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #EFECE4;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header-drop__menu {
+        margin-bottom: 28px;
+        border-bottom: none;
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header-drop__menu:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .alt-header-drop__title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header-drop__title {
+        margin-bottom: 31px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .alt-header-drop__title {
+        margin-bottom: 28px;
+      }
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 641px) {
+      .alt-header-drop__list {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+      }
+    }
+
+    .alt-header-drop__list > li {
+      margin-bottom: 31px;
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 641px) {
+      .alt-header-drop__list > li {
+        margin-bottom: 28px;
+        margin-right: 15px;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header-drop__list > li {
+        margin-bottom: 31px;
+      }
+    }
+
+    .alt-header-drop__list > li:last-child {
+      margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 641px) {
+      .alt-header-drop__list > li:last-child {
+        margin-bottom: 28px;
+        margin-right: 0;
+      }
+    }
+
+    .alt-header-drop__list > li > a {
+      display: block;
+      position: relative;
+      padding-left: 40px;
+      font-size: 15px;
+      -webkit-transition: .2s color;
+      transition: .2s color;
+      color: #000000;
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 641px) {
+      .alt-header-drop__list > li > a {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        width: 110px;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        text-align: center;
+        padding-left: 0;
+        line-height: 1.2;
+      }
+    }
+
+    .alt-header-drop__list > li > a:hover,
+    .alt-header-drop__list > li > a:focus {
+      color: #ff4641;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header-drop__list > li > a span {
+        max-height: 18px;
+      }
+    }
+
+    .alt-header-drop__icon-box {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      width: 30px;
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 641px) {
+      .alt-header-drop__icon-box {
+        position: static;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+        border-radius: 50%;
+        background-color: #ff4641;
+        -webkit-transform: none;
+        transform: none;
+      }
+    }
+
+    .alt-header-drop__icon {
+      color: #ff4641;
+      font-size: 10px;
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 641px) {
+      .alt-header-drop__icon {
+        color: #fff;
+        font-size: 14px;
+      }
+    }
+
+    .alt-header-drop__icon--blog {
+      width: 2em;
+      height: 1.8em;
+    }
+
+    .alt-header-drop__icon--photo {
+      width: 2.1em;
+      height: 1.6em;
+    }
+
+    .alt-header-drop__icon--guide {
+      width: 1.7em;
+      height: 2.1em;
+    }
+
+    .alt-header-drop__icon--reviews {
+      width: 2.2em;
+      height: 2.1em;
+    }
+
+    .alt-header-drop__icon--qa {
+      width: 2.5em;
+      height: 2.1em;
+    }
+
+    .alt-header-drop__icon--avia {
+      width: 2.6em;
+      height: 1.9em;
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 641px) {
+      .alt-header-drop__icon--avia {
+        width: 2.3em;
+      }
+    }
+
+    .alt-header-drop__icon--hotels {
+      width: 2.2em;
+      height: 1.7em;
+    }
+
+    .alt-header-drop__icon--car {
+      width: 1.7em;
+      height: 1.8em;
+    }
+
+    .alt-header-drop__icon--tickets {
+      width: 2.4em;
+      height: 1.9em;
+    }
+
+    .alt-header-drop__icon--bus {
+      width: 1.7em;
+      height: 2.0em;
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 641px) {
+      .alt-header-drop__icon--bus {
+        height: 1.8em;
+      }
+    }
+
+    .alt-header-drop__icon--cash {
+      width: 2.1em;
+      height: 2.1em;
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 641px) {
+      .alt-header-drop__icon--cash {
+        width: 1.8em;
+        height: 1.8em;
+      }
+    }
+
+    .alt-header-drop__icon--hot-avia {
+      width: 3.3em;
+      height: 2.1em;
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 641px) {
+      .alt-header-drop__icon--hot-avia {
+        width: 2.6em;
+      }
+    }
+
+    .alt-header-drop__actions {
+      -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+      flex-shrink: 0;
+      -webkit-flex-basis: 356px;
+      -ms-flex-preferred-size: 356px;
+      flex-basis: 356px;
+      padding-top: 3px;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header-drop__actions {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-flex-basis: 152px;
+        -ms-flex-preferred-size: 152px;
+        flex-basis: 152px;
+        padding: 0;
+        margin: 0 -40px;
+        background-color: #F9F7F2;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header-drop__actions {
+        background-color: transparent;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        margin: 0;
+        -webkit-flex-basis: auto;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+      }
+    }
+
+    .alt-header-drop__action {
+      display: inline-block;
+      width: 130px;
+      padding: 20px 0 17px;
+      margin-right: 10px;
+      background-color: #F9F7F2;
+      border-radius: 2px;
+      text-align: center;
+      cursor: pointer;
+      -webkit-transition: .2s background-color;
+      -moz-transition: .2s background-color;
+      -ms-transition: .2s background-color;
+      -o-transition: .2s background-color;
+      transition: .2s background-color;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header-drop__action {
+        background-color: transparent;
+        border-right: 1px solid #DBD5C5;
+        width: 140px;
+        margin-right: 0;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .alt-header-drop__action {
+        width: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        border-right: 0;
+        padding: 0;
+        margin-bottom: 12px;
+      }
+    }
+
+    .alt-header-drop__action:last-child {
+      margin-right: 0;
+    }
+
+    @media screen and (max-width: 992px) {
+      .alt-header-drop__action:last-child {
+        border-right: none;
+      }
+    }
+
+    .alt-header-drop__action:hover {
+      background-color: #fde283;
+    }
+
+    .actions-links__img {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 12px;
+    }
+
+    @media screen and (max-width: 640px) {
+      .actions-links__img {
+        margin-bottom: 0;
+        margin-right: 15px;
+      }
+    }
+
+    .alt-header-drop__label {
+      font-size: 15px;
+      color: #000;
+      -webkit-transition: .2s color;
+      transition: .2s color;
+    }
+
+
+    /*Стили footer*/
+    .footer {
+      clear: both;
+      overflow: hidden;
+      position: relative;
+      color: #ffffff;
+      background-color: #121212;
+      z-index: 5;
+    }
+
+    .footer a {
+      text-decoration: none;
+    }
+
+    .footer__middle {
+      width: 100%;
+      padding-bottom: 41px;
+      padding-top: 70px;
+    }
+
+    @media screen and (max-width: 580px) {
+      .footer__middle {
+        padding-top: 39px;
+      }
+    }
+
+    .footer__middle-clear {
+      display: none;
+    }
+
+    @media screen and (max-width: 1060px) {
+      .footer__middle-clear {
+        display: block;
+      }
+    }
+
+    .footer__middle-col {
+      float: left;
+      width: 15.72%;
+      margin-right: 1.18%;
+    }
+
+    @media screen and (max-width: 1200px) {
+      .footer__middle-col {
+        width: 18%;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .footer__middle-col {
+        width: 24%;
+        margin-right: 1%;
+      }
+    }
+
+    @media screen and (max-width: 580px) {
+      .footer__middle-col {
+        width: 100%;
+        margin-right: 0;
+        text-align: center;
+        margin-bottom: 29px;
+      }
+    }
+
+    .footer__middle-col--subs {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      width: 22%;
+      margin: 0;
+      margin-left: 10.4%;
+    }
+
+    @media screen and (min-width: 581px) {
+      .footer__middle-col--subs {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: end;
+        -webkit-align-items: flex-end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+      }
+    }
+
+    @media screen and (min-width: 769px) {
+      .footer__middle-col--subs {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+    }
+
+    @media screen and (max-width: 1315px) {
+      .footer__middle-col--subs {
+        width: 25%;
+        margin-left: 6%;
+      }
+    }
+
+    @media screen and (max-width: 1200px) {
+      .footer__middle-col--subs {
+        width: 145px;
+        margin-left: 2%;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .footer__middle-col--subs {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 40px;
+      }
+    }
+
+    @media screen and (max-width: 580px) {
+      .footer__middle-col--subs {
+        margin-top: 0;
+      }
+
+      .footer__middle-col--subs .footer__middle-header {
+        margin-bottom: 23px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .footer-middle__menu--subs {
+        margin-left: 2%;
+      }
+    }
+
+    .footer__middle-menu {
+      width: 100%;
+    }
+
+    .footer__middle-header {
+      width: 100%;
+      margin-bottom: 24px;
+      font-size: 17px;
+      text-transform: uppercase;
+      font-family: "KievitPro", Helvetica, Arial, sans-serif;
+      font-weight: 800;
+      line-height: 25px;
+      letter-spacing: 1px;
+    }
+
+    @media screen and (max-width: 580px) {
+      .footer__middle-header {
+        margin-bottom: 16px;
+      }
+    }
+
+    .footer__middle-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer__middle-list > li {
+      margin-bottom: 13px;
+    }
+
+    .footer__middle-list > li:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer__middle-list > li a {
+      font-family: "KievitPro", Helvetica, Arial, sans-serif;
+      color: #d4d4d4;
+      font-size: 15px;
+      line-height: 21px;
+    }
+
+    .footer__middle-list > li a:hover {
+      text-decoration: underline;
+    }
+
+    .footer__middle-instagram {
+      margin: 4px 0 0 -3px;
+    }
+
+    .footer__bottom {
+      width: 100%;
+      position: relative;
+      padding-bottom: 60px;
+    }
+
+    @media screen and (max-width: 480px) {
+      .footer__bottom {
+        padding-bottom: 20px;
+      }
+    }
+
+    .footer__copyright {
+      float: left;
+      color: #646464;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 21px;
+    }
+
+    .footer__copyright a {
+      color: inherit;
+    }
+
+    .footer__copyright a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 480px) {
+      .footer__copyright {
+        width: 100%;
+        float: none;
+        text-align: center;
+      }
+    }
+
+    .footer__middle-report-btn {
+      margin-top: 33px;
+    }
+
+    @media screen and (min-width: 581px) {
+      .footer__middle-report-btn {
+        margin-top: 0;
+        width: 270px;
+      }
+    }
+
+    @media screen and (min-width: 769px) {
+      .footer__middle-report-btn {
+        margin-top: 45px;
+      }
+    }
+
+    .footer__bottom-caption {
+      font-family: "KievitProBook", Helvetica, Arial, sans-serif;
+      color: #676E69;
+      font-size: 14px;
+      text-transform: uppercase;
+      float: left;
+      letter-spacing: 1px;
+      padding-top: 2px;
+    }
+
+    .footer__bottom-age {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      text-align: center;
+      color: #646464;
+      font-family: "KievitPro", Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      float: right;
+      font-size: 17px;
+      line-height: 33px;
+      letter-spacing: 0.5px;
+      border: 2px solid #3d3d3d;
+      padding-left: 2px;
+    }
+
+    .footer__bottom-age span {
+      font-size: 13px;
+    }
+
+    @media screen and (max-width: 480px) {
+      .footer__bottom-age {
+        float: none;
+        margin: 35px auto 0;
+      }
+    }
+
+    .footer__bottom-liveinternet {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    .footer__bottom-liveinternet a {
+      line-height: 0;
+      display: block;
+    }
+
+    .footer__bottom-inner {
+      position: relative;
+    }
+
+
+    .report-bug {
+      position: relative;
+      display: block;
+      max-width: 278px;
+      margin: 0 auto;
+      padding: 10px 35px 10px 72px;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 26px;
+      text-align: center;
+      color: #646464;
+      background: none;
+      border: 2px solid #232323;
+      border-radius: 2px;
+      cursor: pointer;
+      -webkit-transition: .3s ease-in-out;
+      transition: .3s ease-in-out;
+    }
+
+    .report-bug:hover, .report-bug:focus {
+      color: #fff;
+      border-color: #3b3b3b;
+    }
+
+    .report-bug--for-menu {
+      max-width: 300px;
+      padding: 10px 19px 10px 39px;
+      color: #0C0A0A;
+      background-color: #efeadf;
+      border: none;
+    }
+
+    .report-bug--for-menu:hover, .report-bug--for-menu:focus {
+      color: #0C0A0A;
+      background-color: #e3dac6;
+    }
+
+    .report-bug--for-menu .report-bug__img {
+      left: 6%;
+    }
+
+    .report-bug__img {
+      position: absolute;
+      top: 50%;
+      left: 15%;
+      width: 20px;
+      height: 20px;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    .round-social {
+      overflow: hidden;
+    }
+
+    .round-social__wrap {
+      overflow: hidden;
+      margin-left: -10px;
+      margin-bottom: -10px;
+      line-height: 0;
+      font-size: 0;
+    }
+
+    .round-social__item {
+      display: inline-block;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    .round-social__link {
+      display: block;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-size: 0;
+    }
+
+    .round-social--md .round-social__link {
+      width: 50px;
+      height: 50px;
+    }
+
+    .round-social--dark .round-social__link {
+      background-color: #f9f7f2;
+    }
+
+    .round-social__link--fb {
+      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA5Ni4xMjQgOTYuMTIzIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA5Ni4xMjQgOTYuMTIzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBhdGggZD0iTTcyLjA4OSwwLjAyTDU5LjYyNCwwQzQ1LjYyLDAsMzYuNTcsOS4yODUsMzYuNTcsMjMuNjU2djEwLjkwN0gyNC4wMzdjLTEuMDgzLDAtMS45NiwwLjg3OC0xLjk2LDEuOTYxdjE1LjgwMyAgIGMwLDEuMDgzLDAuODc4LDEuOTYsMS45NiwxLjk2aDEyLjUzM3YzOS44NzZjMCwxLjA4MywwLjg3NywxLjk2LDEuOTYsMS45NmgxNi4zNTJjMS4wODMsMCwxLjk2LTAuODc4LDEuOTYtMS45NlY1NC4yODdoMTQuNjU0ICAgYzEuMDgzLDAsMS45Ni0wLjg3NywxLjk2LTEuOTZsMC4wMDYtMTUuODAzYzAtMC41Mi0wLjIwNy0xLjAxOC0wLjU3NC0xLjM4NmMtMC4zNjctMC4zNjgtMC44NjctMC41NzUtMS4zODctMC41NzVINTYuODQydi05LjI0NiAgIGMwLTQuNDQ0LDEuMDU5LTYuNyw2Ljg0OC02LjdsOC4zOTctMC4wMDNjMS4wODIsMCwxLjk1OS0wLjg3OCwxLjk1OS0xLjk2VjEuOThDNzQuMDQ2LDAuODk5LDczLjE3LDAuMDIyLDcyLjA4OSwwLjAyeiIgZmlsbD0iIzIxMjEyMSIvPjwvZz48L3N2Zz4=);
+      background-size: 20px 20px;
+    }
+
+    .round-social__link--vk {
+      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSIyOTIuMXB4IiB2aWV3Qm94PSIwIDAgNTEyIDI5Mi4xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgMjkyLjE7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPi5zdDB7ZmlsbDojMjEyMTIxO308L3N0eWxlPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01MDkuMywyNjMuOGMtMC42LTEuMy0xLjItMi40LTEuNy0zLjNjLTguOS0xNi0yNS45LTM1LjYtNTAuOS01OC45bC0wLjUtMC41bC0wLjMtMC4zbC0wLjMtMC4zaC0wLjNjLTExLjQtMTAuOC0xOC42LTE4LjEtMjEuNi0yMS45Yy01LjUtNy4xLTYuOC0xNC4zLTMuNy0yMS42YzIuMS01LjUsMTAuMS0xNy4xLDI0LTM0LjljNy4zLTkuNCwxMy4xLTE3LDE3LjMtMjIuN2MzMC43LTQwLjksNDQuMS02Nyw0MC03OC40bC0xLjYtMi43Yy0xLjEtMS42LTMuOC0zLjEtOC4zLTQuNGMtNC40LTEuMy0xMC4xLTEuNi0xNy4xLTAuN2wtNzYuOCwwLjVjLTEuMi0wLjQtMy0wLjQtNS4zLDAuMWMtMi4zLDAuNS0zLjUsMC44LTMuNSwwLjhsLTEuMywwLjdsLTEuMSwwLjhjLTAuOSwwLjUtMS45LDEuNS0yLjksMi44Yy0xLjEsMS4zLTEuOSwyLjktMi43LDQuN2MtOC40LDIxLjUtMTcuOSw0MS41LTI4LjUsNjBjLTYuNiwxMS0xMi42LDIwLjYtMTguMSwyOC43Yy01LjUsOC4xLTEwLjEsMTQtMTMuOSwxNy45Yy0zLjcsMy44LTcuMSw2LjktMTAuMSw5LjJjLTMsMi4zLTUuMywzLjMtNi45LDIuOWMtMS42LTAuNC0zLjEtMC43LTQuNS0xLjFjLTIuNS0xLjYtNC41LTMuOC02LTYuNWMtMS41LTIuOC0yLjUtNi4yLTMuMS0xMC40Yy0wLjUtNC4yLTAuOC03LjgtMC45LTEwLjhjLTAuMS0zLDAtNy4zLDAuMS0xMi44YzAuMi01LjUsMC4zLTkuMiwwLjMtMTEuMmMwLTYuOCwwLjEtMTQuMSwwLjQtMjJjMC4zLTcuOSwwLjUtMTQuMiwwLjctMTguOGMwLjItNC42LDAuMy05LjUsMC4zLTE0LjdzLTAuMy05LjItMC45LTEyLjFjLTAuNi0yLjktMS42LTUuOC0yLjgtOC41Yy0xLjItMi44LTMuMS00LjktNS41LTYuNGMtMi40LTEuNS01LjQtMi43LTguOS0zLjZjLTkuNC0yLjEtMjEuNC0zLjMtMzYtMy41Yy0zMy4xLTAuNC01NC4zLDEuOC02My43LDYuNGMtMy43LDItNy4xLDQuNi0xMC4xLDhjLTMuMiwzLjktMy42LDYtMS4zLDYuNGMxMC43LDEuNiwxOC4yLDUuNCwyMi43LDExLjVsMS42LDMuMmMxLjIsMi4zLDIuNSw2LjQsMy43LDEyLjNjMS4yLDUuOSwyLDEyLjQsMi40LDE5LjVjMC45LDEzLDAuOSwyNC4xLDAsMzMuM2MtMC45LDkuMi0xLjcsMTYuNC0yLjUsMjEuNmMtMC44LDUuMi0yLDkuMy0zLjYsMTIuNWMtMS42LDMuMi0yLjcsNS4yLTMuMiw1LjljLTAuNSwwLjctMSwxLjItMS4zLDEuM2MtMi4zLDAuOS00LjcsMS4zLTcuMiwxLjNjLTIuNSwwLTUuNS0xLjItOS4xLTMuN2MtMy42LTIuNS03LjItNS45LTExLjEtMTAuM2MtMy44LTQuNC04LjEtMTAuNC0xMi45LTE4LjNjLTQuOC03LjgtOS44LTE3LjEtMTQuOS0yNy43bC00LjMtNy43Yy0yLjctNS02LjMtMTIuMi0xMC45LTIxLjdjLTQuNi05LjUtOC43LTE4LjctMTIuMy0yNy42Yy0xLjQtMy43LTMuNi02LjYtNi40LTguNWwtMS4zLTAuOGMtMC45LTAuNy0yLjMtMS41LTQuMy0yLjNjLTItMC44LTQtMS40LTYuMS0xLjdsLTczLDAuNWMtNy41LDAtMTIuNSwxLjctMTUuMiw1LjFMMC44LDIwQzAuMywyMC45LDAsMjIuMywwLDI0LjNjMCwyLDAuNSw0LjQsMS42LDcuMkMxMi4zLDU2LjUsMjMuOSw4MC43LDM2LjQsMTA0czIzLjQsNDIsMzIuNyw1Ni4yYzkuMiwxNC4yLDE4LjcsMjcuNiwyOC4zLDQwLjNjOS42LDEyLjYsMTYsMjAuNywxOS4xLDI0LjNjMy4xLDMuNiw1LjYsNi4yLDcuMyw4bDYuNyw2LjRjNC4zLDQuMywxMC41LDkuNCwxOC44LDE1LjNjOC4zLDYsMTcuNCwxMS44LDI3LjUsMTcuNmMxMCw1LjgsMjEuNywxMC41LDM1LjEsMTQuMWMxMy4zLDMuNiwyNi4zLDUuMSwzOC45LDQuNGgzMC43YzYuMi0wLjUsMTAuOS0yLjUsMTQuMS01LjlsMS4xLTEuM2MwLjctMS4xLDEuNC0yLjcsMi00LjljMC42LTIuMiwwLjktNC43LDAuOS03LjNjLTAuMi03LjYsMC40LTE0LjUsMS43LTIwLjdjMS4zLTYuMSwyLjgtMTAuNyw0LjUtMTMuOWMxLjctMy4xLDMuNi01LjcsNS43LTcuOWMyLjEtMi4xLDMuNi0zLjQsNC41LTMuOWMwLjktMC40LDEuNi0wLjgsMi4xLTAuOWM0LjMtMS40LDkuMywwLDE1LjEsNC4xYzUuOCw0LjIsMTEuMiw5LjMsMTYuMywxNS41YzUuMSw2LjEsMTEuMiwxMywxOC4zLDIwLjdjNy4xLDcuNiwxMy4zLDEzLjMsMTguNywxNy4xbDUuMywzLjJjMy42LDIuMSw4LjIsNC4xLDEzLjksNS45YzUuNywxLjgsMTAuNywyLjIsMTQuOSwxLjNsNjguMi0xLjFjNi43LDAsMTItMS4xLDE1LjctMy4zYzMuNy0yLjIsNi00LjcsNi43LTcuM2MwLjctMi43LDAuOC01LjcsMC4xLTkuMUM1MTAuNSwyNjcuNSw1MDkuOSwyNjUuMSw1MDkuMywyNjMuOHoiLz48L2c+PC9zdmc+);
+      background-size: 21px 18px;
+    }
+
+    .round-social__link--inst {
+      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgMTY5LjA2MyAxNjkuMDYzIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNjkuMDYzIDE2OS4wNjM7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48Zz48cGF0aCBkPSJNMTIyLjQwNiwwSDQ2LjY1NEMyMC45MjksMCwwLDIwLjkzLDAsNDYuNjU1djc1Ljc1MmMwLDI1LjcyNiwyMC45MjksNDYuNjU1LDQ2LjY1NCw0Ni42NTVoNzUuNzUyICAgYzI1LjcyNywwLDQ2LjY1Ni0yMC45Myw0Ni42NTYtNDYuNjU1VjQ2LjY1NUMxNjkuMDYzLDIwLjkzLDE0OC4xMzMsMCwxMjIuNDA2LDB6IE0xNTQuMDYzLDEyMi40MDcgICBjMCwxNy40NTUtMTQuMjAxLDMxLjY1NS0zMS42NTYsMzEuNjU1SDQ2LjY1NEMyOS4yLDE1NC4wNjMsMTUsMTM5Ljg2MiwxNSwxMjIuNDA3VjQ2LjY1NUMxNSwyOS4yMDEsMjkuMiwxNSw0Ni42NTQsMTVoNzUuNzUyICAgYzE3LjQ1NSwwLDMxLjY1NiwxNC4yMDEsMzEuNjU2LDMxLjY1NVYxMjIuNDA3eiIgZmlsbD0iIzIxMjEyMSIvPjxwYXRoIGQ9Ik04NC41MzEsNDAuOTdjLTI0LjAyMSwwLTQzLjU2MywxOS41NDItNDMuNTYzLDQzLjU2M2MwLDI0LjAyLDE5LjU0Miw0My41NjEsNDMuNTYzLDQzLjU2MXM0My41NjMtMTkuNTQxLDQzLjU2My00My41NjEgICBDMTI4LjA5NCw2MC41MTIsMTA4LjU1Miw0MC45Nyw4NC41MzEsNDAuOTd6IE04NC41MzEsMTEzLjA5M2MtMTUuNzQ5LDAtMjguNTYzLTEyLjgxMi0yOC41NjMtMjguNTYxICAgYzAtMTUuNzUsMTIuODEzLTI4LjU2MywyOC41NjMtMjguNTYzczI4LjU2MywxMi44MTMsMjguNTYzLDI4LjU2M0MxMTMuMDk0LDEwMC4yODEsMTAwLjI4LDExMy4wOTMsODQuNTMxLDExMy4wOTN6IiBmaWxsPSIjMjEyMTIxIi8+PHBhdGggZD0iTTEyOS45MjEsMjguMjUxYy0yLjg5LDAtNS43MjksMS4xNy03Ljc3LDMuMjJjLTIuMDUxLDIuMDQtMy4yMyw0Ljg4LTMuMjMsNy43OGMwLDIuODkxLDEuMTgsNS43MywzLjIzLDcuNzggICBjMi4wNCwyLjA0LDQuODgsMy4yMiw3Ljc3LDMuMjJjMi45LDAsNS43My0xLjE4LDcuNzgtMy4yMmMyLjA1LTIuMDUsMy4yMi00Ljg5LDMuMjItNy43OGMwLTIuOS0xLjE3LTUuNzQtMy4yMi03Ljc4ICAgQzEzNS42NjEsMjkuNDIxLDEzMi44MjEsMjguMjUxLDEyOS45MjEsMjguMjUxeiIgZmlsbD0iIzIxMjEyMSIvPjwvZz48L3N2Zz4=);
+      background-size: 22px 22px;
+    }
+
+    .round-social__link--rss {
+      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ4Ni4zOTIgNDg2LjM5MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDg2LjM5MiA0ODYuMzkyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij48Zz48Zz48Zz48Zz48cGF0aCBkPSJNMC4xODIsMHY5My4yNjZjMjE2LjUwNSwwLDM5Mi43LDE3Ni4zNzgsMzkyLjcsMzkzLjEyNmg5My41MDkgICAgICBDNDg2LjM5MiwyMTguMjY4LDI2OC4yNDUsMCwwLjE4MiwweiIgZmlsbD0iIzIxMjEyMSIvPjxwYXRoIGQ9Ik0wLjA2MSwxNjUuMjIxdjkzLjIzNWM2MC43MDgsMCwxMTcuNzY4LDIzLjc0MiwxNjAuNzUyLDY2Ljc1NyAgICAgIGM0Mi45MjQsNDIuODk0LDY2LjYzNiwxMDAuMjI3LDY2LjYzNiwxNjEuMTc4aDkzLjY2MUMzMjEuMTEsMzA5LjI4NCwxNzcuMDQ3LDE2NS4yMjEsMC4wNjEsMTY1LjIyMXoiIGZpbGw9IiMyMTIxMjEiLz48cGF0aCBkPSJNNjQuNzUxLDM1Ni42NDdDMjkuMDMxLDM1Ni42NDcsMCwzODUuNzM5LDAsNDIxLjI0NWMwLDM1LjcxOSwyOS4wMzEsNjQuNTM4LDY0Ljc1MSw2NC41MzggICAgICBjMzUuODQxLDAsNjQuODQyLTI4LjgxOSw2NC44NDItNjQuNTM4QzEyOS41NjMsMzg1LjgsMTAwLjU5MiwzNTYuNjQ3LDY0Ljc1MSwzNTYuNjQ3eiIgZmlsbD0iIzIxMjEyMSIvPjwvZz48L2c+PC9nPjwvZz48L3N2Zz4=);
+      background-size: 20px 20px;
+      background-position: 53% 50%;
+    }
+
+    .content-wrapper {
+      position: relative;
+      width: 100%;
+      padding: 40px 0 0;
+    }
+
+    .is-branding .content-wrapper {
+      padding-top: 300px;
+    }
+
+    @media (max-width: 640px) {
+      .content-wrapper {
+        padding-top: 20px;
+      }
+
+      .is-branding .content-wrapper {
+        padding-top: 320px;
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 6;
+      min-height: 500px;
+      background-color: #f9f7f2;
+    }
+
+    .is-index .content {
+      padding-bottom: 60px;
+    }
+
+    .is-blog-post .content,
+    .is-profile .content {
+      background-color: #fff;
+    }
+
+    .content--small {
+      min-height: 0;
+    }
+
+
+    /*Общие стили*/
+
+    .limited {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .clearfix {
+      *zoom: 1;
+    }
+
+    .clearfix:before, .clearfix:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */
+      line-height: 0;
+    }
+
+    .clearfix:after {
+      clear: both;
+    }
+
+    .container-new {
+      width: 100%;
+      max-width: 1340px;
+      margin: 0 auto;
+    }
+
+    .container-new--header {
+      max-width: 100%;
+      margin: 0;
+    }
+
+    @media screen and (max-width: 992px) {
+      .container-new--header-drop {
+        height: 100%;
+      }
+    }
+
+    .container-new__inner {
+      padding: 0 40px;
+    }
+
+    @media screen and (max-width: 992px) {
+      .container-new__inner {
+        padding: 0 12px;
+      }
+    }
+
+    .container-new__inner--header {
+      height: 100%;
+    }
+
+    @media screen and (max-width: 992px) {
+      .container-new__inner--header {
+        padding: 0 40px;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .container-new__inner--header {
+        padding: 0 12px;
+      }
+    }
+  </style>
+</head>
 <body>
-    <div class="wrapper">
-        <div id="app">
-            <div class="content-wrapper">
-                <section id="main">
-                    <div class="container">
-                        <button class="showbtn">Показать Диалог</button>
-                    </div>
-                </section>
-                <div class="dialog" id="dialog">
-                    <div class="header">
-                        <div class="topline"></div>
-                        <div class="profile">
-                            <div class="profile__ava ava01"></div>
-                            <div class="profile__description">
-                                <div class="profile__description_name">Токсикова Ольга</div>
-                                <div class="profile__description_from">Днепропетровск</div>
-                            </div>
-                        </div>
-                        <div class="stars clear">
-                            <a href="#" class="stars__star"></a>
-                            <a href="#" class="stars__star greyscale"></a>
-                            <a href="#" class="stars__star greyscale"></a>
-                            <a href="#" class="stars__star greyscale"></a>
-                            <a href="#" class="stars__star greyscale"></a>
-                        </div>
-                        <div class="close">
-                            <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                      <g>
-                        <path id="svg_1" fill-rule="evenodd" fill="#666666" d="m16,0c-8.837,0 -16,7.163 -16,16c0,8.836 7.163,16 16,16c8.836,0 16,-7.163 16,-16c0,-8.837 -7.164,-16 -16,-16zm0,30c-7.732,0 -14,-6.268 -14,-14c0,-7.732 6.268,-14 14,-14s14,6.268 14,14c0,7.732 -6.268,14 -14,14z" clip-rule="evenodd"/>
-                        <path id="svg_2" fill-rule="evenodd" fill="#666666" d="m22.729,21.271l-5.268,-5.269l5.238,-5.195c0.395,-0.391 0.395,-1.024 0,-1.414c-0.394,-0.39 -1.034,-0.39 -1.428,0l-5.231,5.188l-5.309,-5.31c-0.394,-0.396 -1.034,-0.396 -1.428,0c-0.394,0.395 -0.394,1.037 0,1.432l5.301,5.302l-5.331,5.287c-0.394,0.391 -0.394,1.024 0,1.414c0.394,0.391 1.034,0.391 1.429,0l5.324,-5.28l5.276,5.276c0.394,0.396 1.034,0.396 1.428,0c0.393,-0.394 0.393,-1.035 -0.001,-1.431z" clip-rule="evenodd"/>
-                      </g>
-                      </svg>
-                        </div>
-                    </div>
-                    <div class="messages_box">
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava01"></div>
-                            <div class="messages_box__message_text">Где взять на прокат вечернее красивое платье? А еще лучше дизайнерское! Предстоит участие в мероприятии, где все гости будут наверняка одеты в наряды "от кутюр", а у меня со средствами туговато, да и жалко на один раз такие
-                                деньжищи отваливать. Мне </div>
-                            <div class="messages_box__message_date">вчера в 17.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava02"></div>
-                            <div class="messages_box__message_text">Поисковик вам в помощь! Но цена примерно в половину стоимости платья.</div>
-                            <div class="messages_box__message_date">вчера в 18.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava01"></div>
-                            <div class="messages_box__message_text">Где взять на прокат вечернее красивое платье? А еще лучше дизайнерское! Предстоит участие в мероприятии, где все гости будут наверняка одеты в наряды "от кутюр", а у меня со средствами туговато</div>
-                            <div class="messages_box__message_date">сегодня в 17.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava02"></div>
-                            <div class="messages_box__message_text">Поисковик вам в помощь! Но цена примерно в половину стоимости платья.</div>
-                            <div class="messages_box__message_date">18.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava01"></div>
-                            <div class="messages_box__message_text">Где взять на прокат вечернее красивое платье? А еще лучше дизайнерское! Предстоит участие в мероприятии, где все гости будут наверняка одеты в наряды "от кутюр", а у меня со средствами туговато</div>
-                            <div class="messages_box__message_date">сегодня в 17.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava02"></div>
-                            <div class="messages_box__message_text">Поисковик вам в помощь! Но цена примерно в половину стоимости платья.</div>
-                            <div class="messages_box__message_date">18.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava01"></div>
-                            <div class="messages_box__message_text">Где взять на прокат вечернее красивое платье? А еще лучше дизайнерское! Предстоит участие в мероприятии, где все гости будут наверняка одеты в наряды "от кутюр", а у меня со средствами туговато</div>
-                            <div class="messages_box__message_date">сегодня в 17.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava02"></div>
-                            <div class="messages_box__message_text">Поисковик вам в помощь! Но цена примерно в половину стоимости платья.</div>
-                            <div class="messages_box__message_date">18.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava01"></div>
-                            <div class="messages_box__message_text">Где взять на прокат вечернее красивое платье? А еще лучше дизайнерское! Предстоит участие в мероприятии, где все гости будут наверняка одеты в наряды "от кутюр", а у меня со средствами туговато</div>
-                            <div class="messages_box__message_date">сегодня в 17.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava02"></div>
-                            <div class="messages_box__message_text">Поисковик вам в помощь! Но цена примерно в половину стоимости платья.</div>
-                            <div class="messages_box__message_date">18.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava01"></div>
-                            <div class="messages_box__message_text">Где взять на прокат вечернее красивое платье? А еще лучше дизайнерское! Предстоит участие в мероприятии, где все гости будут наверняка одеты в наряды "от кутюр", а у меня со средствами туговато</div>
-                            <div class="messages_box__message_date">сегодня в 17.45</div>
-                        </div>
-                        <div class="messages_box__message">
-                            <div class="messages_box__message_ava ava02"></div>
-                            <div class="messages_box__message_text">Поисковик вам в помощь! Но цена примерно в половину стоимости платья.</div>
-                            <div class="messages_box__message_date">18.45</div>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <div class="footer__ava ava02"></div>
-                        <form class="footer__form" id="mainfrm">
-                            <textarea class="footer__form_textarea" id='ta'></textarea>
-                            <button class="footer__form_button ">Отправить</button>
-                        </form>
-                    </div>
 
-                </div>
-            </div>
+<!-- Код header -->
+
+<header class="alt-header">
+  <div class="container-new container-new--header">
+    <div class="container-new__inner container-new__inner--header">
+      <div class="alt-header__wrap">
+        <div class="alt-header__left">
+          <div class="alt-header__logo">
+            <a class="" href="http://travelask.ru">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 65"
+                   version="1.1" class="alt-header__logo-img">
+                <g id="Logotype-—-TravelAsk,-со-старым-маскотом-(b)" stroke="none" stroke-width="1" fill="none"
+                   fill-rule="evenodd">
+                  <path fill="currentColor"
+                        d="M8.712,49.7999992 L8.712,24.4999992 L0,24.4999992 L0,16.7999992 L26.356,16.7999992 L26.356,24.4999992 L17.644,24.4999992 L17.644,49.7999992 L8.712,49.7999992 Z M41.38,49.7999992 L32.448,49.7999992 L32.448,16.7999992 L44.328,16.7999992 C52.556,16.7999992 57.704,21.1559992 57.704,28.1079992 C57.704,31.7159992 55.768,35.0159992 52.204,37.0399992 L58.848,46.3239992 L58.848,49.7999992 L50.532,49.7999992 L43.58,39.3719992 L41.38,39.3719992 L41.38,49.7999992 Z M41.204,32.2439992 L44.284,32.2439992 C47.056,32.2439992 48.772,30.5719992 48.772,28.1079992 C48.772,25.7759992 47.1,24.3239992 44.284,24.3239992 L41.204,24.3239992 L41.204,32.2439992 Z M70.044,49.7999992 L62.652,49.7999992 L62.652,46.7199992 L73.124,16.7999992 L83.024,16.7999992 L93.452,46.2799992 L93.452,49.7999992 L85.268,49.7999992 L83.42,43.9919992 L71.936,43.9919992 L70.044,49.7999992 Z M81.176,36.6879992 L77.744,25.5999992 L74.224,36.6879992 L81.176,36.6879992 Z M104.912,49.7999992 L94.88,20.3199992 L94.88,16.7999992 L103.636,16.7999992 L110.236,39.0199992 L117.188,16.7999992 L125.548,16.7999992 L125.548,19.8799992 L115.428,49.7999992 L104.912,49.7999992 Z M131.2,49.7999992 L131.2,16.7999992 L153.156,16.7999992 L153.156,24.4999992 L140.132,24.4999992 L140.132,29.3839992 L151.44,29.3839992 L151.44,36.3359992 L140.132,36.3359992 L140.132,42.0999992 L153.156,42.0999992 L153.156,49.7999992 L131.2,49.7999992 Z M160.392,49.7999992 L160.392,16.7999992 L169.324,16.7999992 L169.324,42.0999992 L181.952,42.0999992 L181.952,49.7999992 L160.392,49.7999992 Z M240.392,49.792 L233,49.792 L233,46.712 L243.472,16.792 L253.372,16.792 L263.8,46.272 L263.8,49.792 L255.616,49.792 L253.768,43.984 L242.284,43.984 L240.392,49.792 Z M251.524,36.68 L248.092,25.592 L244.572,36.68 L251.524,36.68 Z M281.024,50.584 C273.28,50.584 269.32,47.284 267.956,43.016 L267.956,39.54 L275.172,39.54 C275.964,42.004 277.856,43.28 281.156,43.28 C283.884,43.28 285.556,42.224 285.556,40.244 C285.556,38.616 284.28,37.56 281.288,37.12 L277.768,36.636 C271.652,35.756 267.912,32.412 267.912,26.692 C267.912,19.828 273.016,16 280.892,16 C287.492,16 292.464,18.772 293.256,23.612 L293.256,27.044 L285.996,27.044 C285.6,24.932 284.06,23.304 280.848,23.304 C278.208,23.304 276.668,24.316 276.668,26.252 C276.668,27.528 277.548,28.54 280.408,28.98 L283.664,29.464 C290,30.388 294.312,33.82 294.312,39.628 C294.312,46.36 288.988,50.584 281.024,50.584 Z M310.084,36.416 L310.084,49.792 L301.152,49.792 L301.152,16.792 L310.084,16.792 L310.084,29.948 L320.38,16.792 L327.948,16.792 L327.948,20.224 L318.092,32.456 L329.312,46.316 L329.312,49.792 L320.82,49.792 L310.084,36.416 Z"
+                        id="TRAVEL"></path>
+                  <g id="Рыжий" transform="translate(187.000000, 0.000000)">
+                    <path d="M20.7679127,1.75827579 C29.192377,1.75827579 37.3019008,4.90845437 39.754877,17.0469464 C40.3452937,19.969625 39.694004,28.7177996 39.694004,31.9536131 C39.694004,48.6299821 31.2202738,62.1486925 20.7679127,62.1486925 C10.3155516,62.1486925 1.84207937,48.6299821 1.84207937,31.9536131 C1.84207937,28.1632361 1.11521429,19.2930575 1.91404365,15.9507163 C4.63114683,4.58732341 12.6911468,1.75827579 20.7679127,1.75827579"
+                          id="Fill-1" fill="#F9C7B0"></path>
+                    <path d="M10.5607976,42.144994 C11.3170675,42.2357877 12.0070476,42.1341607 12.5675437,41.8083869 C13.3772063,41.3386845 13.2345675,40.983506 14.7076429,39.7214226 C16.1010159,38.5271766 20.3167302,38.5710258 20.7709563,38.5803115 C21.2249246,38.5710258 25.4406389,38.5271766 26.8340119,39.7214226 C28.3070873,40.983506 28.1647063,41.3386845 28.9741111,41.8083869 C29.5346071,42.1341607 30.2248452,42.2357877 30.9808571,42.144994 C31.545996,42.0776726 32.1487937,41.9038234 32.7639722,41.6329901 C32.2726032,43.1767401 29.1322262,46.7380694 27.6403214,46.5799544 C27.5165119,46.5675734 27.4006984,46.548744 27.2895278,46.5237242 C25.4909365,46.1321766 25.1919881,44.3820774 20.7709563,44.3709861 C16.3499246,44.3820774 16.0509762,46.1321766 14.2523849,46.5237242 C14.1409563,46.548744 14.0254008,46.5675734 13.9015913,46.5799544 C12.4096865,46.7380694 9.26930952,43.1767401 8.77768254,41.6329901 C9.39311905,41.9038234 9.99565873,42.0776726 10.5607976,42.144994 M39.3343889,47.6756687 C39.252881,46.2371567 39.2451429,44.8422361 39.2828016,43.5368194 C39.4236349,38.7273353 40.183,35.145629 40.183,35.145629 L39.7788135,34.6070575 L39.0181587,33.5925933 C39.0181587,33.5925933 37.0769286,37.2826329 33.7768889,37.6708274 C30.4768492,38.0590218 29.4858571,36.5905893 25.2358373,35.5338234 C22.2752421,34.7981885 19.49675,34.8105694 16.3060754,35.5338234 C12.0354206,36.5013433 11.0648056,38.0590218 7.76476587,37.6708274 C4.46472619,37.2826329 2.52349603,33.5925933 2.52349603,33.5925933 L1.76284127,34.6070575 L1.3589127,35.145629 C1.3589127,35.145629 2.11827778,38.7273353 2.25885317,43.5368194 C2.2965119,44.8422361 2.28877381,46.2371567 2.20726587,47.6756687 C2.18843651,48.0280099 2.16496429,48.3818988 2.13530159,48.738625 C1.68907143,54.2383472 6.93214683,58.4855298 11.1558571,60.4360456 C12.4501825,61.035748 13.6480397,61.417752 14.5590714,61.5539425 C17.5475238,62.0030099 19.7299246,63.8315218 20.5767302,64.6504702 L20.7709563,64.8428909 L20.9649246,64.6504702 C21.8119881,63.8315218 23.994131,62.0030099 26.9828413,61.5539425 C27.893873,61.417752 29.0914722,61.035748 30.3860556,60.4360456 C34.6097659,58.4855298 39.8525833,54.2383472 39.4063532,48.738625 C39.3766905,48.3818988 39.3532183,48.0280099 39.3343889,47.6756687"
+                          id="Fill-3" fill="#AF2618"></path>
+                    <path d="M27.6402698,46.5799028 C27.5167183,46.5675218 27.4006468,46.5486925 27.2897341,46.5236726 C25.4908849,46.132125 25.1919365,44.3820258 20.7709048,44.3711925 C16.350131,44.3820258 16.0509246,46.132125 14.2523333,46.5236726 C14.1409048,46.5486925 14.0253492,46.5675218 13.9015397,46.5799028 C12.4096349,46.7380179 9.26925794,43.1766885 8.77763095,41.6329385 C9.39306746,41.9037718 9.99560714,42.077621 10.560746,42.1449425 C9.90971429,41.878752 9.47276984,41.647125 9.47276984,41.647125 C9.47276984,41.647125 13.4269365,40.9597242 14.8314008,38.6555774 C15.9366587,36.8427996 18.2614405,37.133752 20.7709048,37.1494861 C23.280369,37.133752 25.6048929,36.8427996 26.7104087,38.6555774 C28.1146151,40.9597242 32.0690397,41.647125 32.0690397,41.647125 C32.0690397,41.647125 31.6323532,41.878752 30.9808056,42.1449425 C31.5462024,42.077621 32.1487421,41.9037718 32.7639206,41.6329385 C32.2725516,43.1766885 29.1321746,46.7380179 27.6402698,46.5799028 M39.28275,43.5367679 C39.173127,39.932879 39.4924524,36.6970655 39.7790198,34.6072639 L39.0181071,33.5925417 C39.0181071,33.5925417 37.076877,37.2825813 33.7768373,37.6707758 C30.4767976,38.0589702 29.4858056,36.5905377 25.2357857,35.5337718 C22.2751905,34.7981369 19.4966984,34.8107758 16.3062817,35.5337718 C12.035369,36.5012917 11.064754,38.0589702 7.76471429,37.6707758 C4.4646746,37.2825813 2.52344444,33.5925417 2.52344444,33.5925417 L1.76278968,34.6072639 C2.04909921,36.6970655 2.3684246,39.932879 2.25905952,43.5367679 C2.23713492,44.2646647 2.19638095,45.0098433 2.13525,45.7627599 C2.08211508,46.4186925 2.11023016,47.0576012 2.20721429,47.675875 C2.93227381,52.290875 7.52663889,55.8148036 11.2682659,57.5148631 C12.5192579,58.0830972 13.6742976,58.4462718 14.5590198,58.5793671 C17.5474722,59.0271448 19.729873,60.8556567 20.5766786,61.6743472 L20.7709048,61.8670258 L20.964873,61.6743472 C21.8119365,60.8556567 23.9940794,59.0271448 26.9827897,58.5793671 C27.867254,58.4462718 29.0225516,58.0830972 30.2732857,57.5148631 C34.0149127,55.8148036 38.6095357,52.290875 39.3343373,47.675875 C39.4315794,47.0576012 39.4596944,46.4186925 39.4063016,45.7627599 C39.3454286,45.0098433 39.3046746,44.2646647 39.28275,43.5367679"
+                          id="Fill-5" fill="#CF3318"></path>
+                    <path d="M32.7279643,56.9841329 L30.3861587,60.4360972 C29.0913175,61.0357996 27.8939762,61.4175456 26.9829444,61.5537361 C23.9942341,62.0030615 21.8120913,63.8315734 20.9650278,64.6505218 L20.7710595,64.8429425 L20.5768333,64.6505218 C19.7297698,63.8315734 17.547369,62.0030615 14.5591746,61.5537361 C13.6478849,61.4175456 12.4502857,61.0357996 11.1557024,60.4360972 L8.81363889,56.9841329 L11.2684206,57.5149663 L12.9589365,57.8796885 L9.74504762,54.0333393 L12.8508611,52.3237361 L9.74195238,47.4332599 L14.248877,46.5769107 L14.2522302,46.5235179 C14.7611389,46.4123472 15.1493333,46.1933591 15.5452659,45.9364544 C16.5486389,45.2820694 17.5992143,44.3787758 20.7710595,44.3710377 C24.0019722,44.3787758 25.0321706,45.3166329 26.054373,45.9725655 C26.4301865,46.2152837 26.8057421,46.4187956 27.289631,46.5235179 L27.2927262,46.5769107 L31.7996508,47.4332599 L28.6907421,52.3237361 L31.7965556,54.0333393 L28.5826667,57.8796885 L30.2731825,57.5149663 L32.7279643,56.9841329 Z"
+                          id="Fill-7" fill="#EB6532"></path>
+                    <path d="M20.7709306,44.3710635 C17.5990853,44.3788016 16.5487679,45.2820952 15.5451369,45.9364802 L16.966625,50.7722738 L19.4513274,52.7916587 L21.0041052,58.0736825 L22.7119028,52.7916587 L25.351625,50.617254 L26.054244,45.9725913 C25.0322996,45.3166587 24.0018433,44.3788016 20.7709306,44.3710635"
+                          id="Fill-10" fill="#ED7646"></path>
+                    <path d="M41.541629,22.3525198 L41.541629,23.9633333 C41.541629,23.9633333 39.6006567,24.6084325 39.4064306,26.2223413 C39.2124623,27.8347024 39.1905377,28.4594246 38.6424226,30.3771825 C38.3997044,31.2288889 37.3148234,32.5345635 35.3596647,32.910119 C32.9221647,33.3767262 29.4436329,33.1058929 28.1851607,32.9070238 C26.2890694,32.6065278 24.8113512,31.6328175 24.0710734,30.5791468 C23.1817083,29.3142262 22.6619663,28.0415675 22.3565694,27.0255556 C21.9856567,25.78875 21.9356171,24.9308532 21.9356171,24.9308532 C21.9356171,24.9308532 21.8056171,24.1248016 20.7710337,24.1248016 C19.7361925,24.1248016 19.6061925,24.9308532 19.6061925,24.9308532 C19.6061925,24.9308532 19.5404187,26.0549405 19.0018472,27.5873413 C18.6856171,28.4906349 18.2035337,29.5381151 17.470994,30.5791468 C16.7304583,31.6328175 15.2524821,32.6065278 13.3566488,32.9070238 C12.0981766,33.1058929 8.6193869,33.3767262 6.18214484,32.910119 C4.22672817,32.5345635 3.14184722,31.2288889 2.8993869,30.3771825 C2.89139087,30.3490675 2.88365278,30.3209524 2.87591468,30.2925794 C2.35152976,28.4408532 2.32625198,27.8114881 2.13537897,26.2223413 C1.94115278,24.6084325 -7.73809524e-05,23.9633333 -7.73809524e-05,23.9633333 L-7.73809524e-05,22.3525198 L4.27057738,21.7043254 C4.27057738,21.7043254 7.29049802,21.372619 11.1649623,21.4476786 C16.7616687,21.5542063 20.7710337,22.3494246 20.7710337,22.3494246 C20.7710337,22.3494246 24.7801409,21.5542063 30.3765893,21.4476786 C34.2510536,21.372619 37.2709742,21.7043254 37.2709742,21.7043254 L41.541629,22.3525198 Z"
+                          id="Fill-12" fill="#212121"></path>
+                    <path d="M2.89925794,30.377131 C3.14171825,31.2288373 4.22659921,32.5345119 6.18227381,32.9100675 C8.61951587,33.3766746 12.0980476,33.1058413 13.3567778,32.9069722 C15.2526111,32.6064762 16.7303294,31.6327659 17.4708651,30.5790952 C18.2034048,29.5380635 18.6854881,28.4908413 19.0019762,27.5875476 L2.87578571,30.2925278 C2.88352381,30.3209008 2.89151984,30.3490159 2.89925794,30.377131 Z M22.3566984,27.025504 C22.6618373,28.0415159 23.1818373,29.3141746 24.0709444,30.5790952 C24.8112222,31.6327659 26.2891984,32.6064762 28.1850317,32.9069722 C29.443504,33.1058413 32.9220357,33.3766746 35.3597937,32.9100675 C37.3149524,32.5345119 38.3998333,31.2288373 38.6422937,30.377131 C39.1904087,28.459373 39.2123333,27.8349087 39.4063016,26.2225476 C39.6005278,24.608381 41.5415,23.9632817 41.5415,23.9632817 L41.5415,23.8085198 L22.3566984,27.025504 Z"
+                          id="Fill-15" fill="#575553" opacity="0.5"></path>
+                    <path d="M25.0415079,34.8075258 C25.0415079,34.8075258 24.9115079,35.3241726 23.4884722,35.3899464 C22.0654365,35.4539147 19.4762698,35.4539147 18.0532341,35.3899464 C16.6301984,35.3241726 16.5001984,34.8075258 16.5001984,34.8075258 C16.5001984,34.8075258 16.6002778,34.3708393 16.7712897,33.6818909 C17.3065079,31.5059385 18.5275794,26.8140734 19.4120437,25.4864742 C20.576627,23.7379226 20.9648214,23.7379226 22.1296627,25.4864742 C23.0143849,26.8140734 24.2351984,31.5059385 24.7706746,33.6818909 C24.9411706,34.3708393 25.0415079,34.8075258 25.0415079,34.8075258"
+                          id="Fill-17" fill="#D7815D"></path>
+                    <path d="M24.7707262,33.6819425 C24.5530278,33.8150377 24.1694762,33.9496806 23.4885238,33.9808909 C22.0654881,34.0451171 19.4763214,34.0451171 18.0532857,33.9808909 C17.3720754,33.9496806 16.9885238,33.8150377 16.7710833,33.6819425 C17.3065595,31.5057321 18.527631,26.814125 19.4120952,25.4865258 C20.5766786,23.7379742 20.964873,23.7379742 22.1297143,25.4865258 C23.0141786,26.814125 24.23525,31.5057321 24.7707262,33.6819425"
+                          id="Fill-19" fill="#F5A985"></path>
+                    <path d="M39.0713452,11.6680417 C39.0697976,11.5803433 39.0667024,11.4910972 39.0620595,11.398756 C39.0543214,11.2140734 39.0416825,11.0216528 39.0231111,10.8227837 L39.0231111,10.8212361 C38.8255317,8.73117659 37.975631,5.84306151 35.2283492,3.08623611 C32.7108889,0.562585317 28.7580119,-0.647652778 21.043131,0.347982143 C13.3285079,1.34361706 6.11170238,3.58560119 3.87307143,7.07032341 C3.28755556,7.98135516 2.84287302,8.92385516 2.62207937,9.80212897 L2.62207937,9.80341865 C2.18384524,11.5506806 2.63317063,13.0456806 4.61979762,13.5419504 C7.60515476,14.2886766 19.5496786,11.5506806 27.5132103,9.55941071 C35.4757103,7.56788294 36.5541429,9.07087897 38.0475952,11.808875 C38.4373373,12.3474464 38.8740238,13.8378036 38.8740238,13.8378036 C38.8740238,13.8378036 39.096623,12.9971885 39.0713452,11.6680417"
+                          id="Fill-21" fill="#AF2618"></path>
+                    <path d="M39.0521806,10.8037996 C38.9477163,8.41969246 37.9755536,5.84290675 35.2282718,3.08608135 C32.7108115,0.562430556 28.7579345,-0.647549603 21.0433115,0.348085317 C13.3284306,1.34372024 6.111625,3.58544643 3.87299405,7.07016865 C3.28747817,7.98145833 2.84279563,8.9237004 2.62225992,9.80197421 L2.62225992,9.80352183 C2.90702183,10.5190377 3.52684325,11.0637996 4.58206151,11.3266369 C7.56896627,12.0733631 19.513748,9.335625 27.4757321,7.34409722 C35.4395218,5.35282738 36.5158909,6.94506944 38.1775179,9.58427579 C38.7356925,10.4710615 39.054502,11.2474504 39.054502,11.2474504 L39.0521806,10.8037996 Z"
+                          id="Fill-24" fill="#CF3318"></path>
+                    <path d="M4.86602381,7.35830952 C4.86602381,7.35830952 10.0925913,3.31644444 19.19775,1.71646429 C27.4171548,0.272019841 30.2456865,1.3845 30.2456865,1.3845 C30.2456865,1.3845 19.2642976,2.9445 13.5915,5.33376587 C7.91818651,7.72354762 4.86602381,7.35830952 4.86602381,7.35830952"
+                          id="Fill-27" fill="#DB4D28"></path>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a class="alt-header__logo-title" href="http://travelask.ru/flights">Авиабилеты</a>
+          </div>
         </div>
+        <div class="alt-header__right">
+          <div class="alt-header__drop-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                 class="alt-header__icon-services">
+              <path d="M4 2C4 3.10457 3.10457 4 2 4C0.89543 4 0 3.10457 0 2C0 0.89543 0.89543 0 2 0C3.10457 0 4 0.89543 4 2Z"
+                    fill="currentColor"></path>
+              <path d="M10 2C10 3.10457 9.10457 4 8 4C6.89543 4 6 3.10457 6 2C6 0.89543 6.89543 0 8 0C9.10457 0 10 0.89543 10 2Z"
+                    fill="currentColor"></path>
+              <path d="M16 2C16 3.10457 15.1046 4 14 4C12.8954 4 12 3.10457 12 2C12 0.89543 12.8954 0 14 0C15.1046 0 16 0.89543 16 2Z"
+                    fill="currentColor"></path>
+              <path d="M4 8C4 9.10457 3.10457 10 2 10C0.89543 10 0 9.10457 0 8C0 6.89543 0.89543 6 2 6C3.10457 6 4 6.89543 4 8Z"
+                    fill="currentColor"></path>
+              <path d="M10 8C10 9.10457 9.10457 10 8 10C6.89543 10 6 9.10457 6 8C6 6.89543 6.89543 6 8 6C9.10457 6 10 6.89543 10 8Z"
+                    fill="currentColor"></path>
+              <path d="M16 8C16 9.10457 15.1046 10 14 10C12.8954 10 12 9.10457 12 8C12 6.89543 12.8954 6 14 6C15.1046 6 16 6.89543 16 8Z"
+                    fill="currentColor"></path>
+              <path d="M4 14C4 15.1046 3.10457 16 2 16C0.89543 16 0 15.1046 0 14C0 12.8954 0.89543 12 2 12C3.10457 12 4 12.8954 4 14Z"
+                    fill="currentColor"></path>
+              <path d="M10 14C10 15.1046 9.10457 16 8 16C6.89543 16 6 15.1046 6 14C6 12.8954 6.89543 12 8 12C9.10457 12 10 12.8954 10 14Z"
+                    fill="currentColor"></path>
+              <path d="M16 14C16 15.1046 15.1046 16 14 16C12.8954 16 12 15.1046 12 14C12 12.8954 12.8954 12 14 12C15.1046 12 16 12.8954 16 14Z"
+                    fill="currentColor"></path>
+            </svg>
+            <span> Сервисы<svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7"
+                               class="alt-header__arrow"><path fill-rule="evenodd" clip-rule="evenodd"
+                                                               d="M1.17851 0.5L5.00006 4.32155L8.82161 0.5L10 1.67864L6.13143 5.5472C5.50659 6.17204 4.49353 6.17204 3.86869 5.5472L0 1.67851L1.17851 0.5Z"
+                                                               fill="currentColor"></path></svg></span></div>
+          <a class="alt-header__action js-signin" href="http://travelask.ru/users/sign_in">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21">
+              <path d="M9.14334 0.703125C9.37115 0.725906 9.60103 0.742474 9.82884 0.769397C10.8312 0.895728 11.7487 1.25194 12.5708 1.83389C13.9916 2.8404 14.9007 4.20104 15.2093 5.91376C15.6276 8.22085 14.9939 10.2235 13.3185 11.8803C13.1238 12.0729 12.8981 12.2345 12.6868 12.4126C12.6558 12.4395 12.6226 12.4623 12.5791 12.4975C12.6247 12.5223 12.6578 12.543 12.693 12.5596C13.6892 13.0131 14.5673 13.6344 15.3356 14.4111C16.0398 15.1256 16.6114 15.9374 17.0504 16.8383C17.4688 17.6978 17.7463 18.6007 17.8975 19.5451C17.9202 19.6901 17.9762 19.8288 17.9927 19.9717C18.0549 20.4915 17.7131 20.9244 17.1954 20.9927C16.7398 21.0528 16.2821 20.6883 16.2199 20.2306C15.9735 18.4267 15.2652 16.8466 13.9274 15.5833C12.8421 14.5581 11.5643 13.914 10.0836 13.6924C6.52353 13.1602 3.39217 15.2685 2.2407 18.3543C2.05224 18.8596 1.92591 19.3815 1.84307 19.9158C1.80165 20.183 1.77472 20.4605 1.58005 20.6821C1.35224 20.943 0.987742 21.0611 0.660524 20.9616C0.306383 20.854 0.0578631 20.5578 0.0123011 20.2099C-0.0166929 19.9945 0.0040172 19.7936 0.0909992 19.5927C0.136561 19.4871 0.140703 19.3649 0.161413 19.251C0.391294 18.0125 0.846914 16.8652 1.53656 15.8131C2.20756 14.7921 3.0401 13.9265 4.06525 13.2596C4.46081 13.0007 4.88951 12.7916 5.30371 12.5617C5.33891 12.541 5.37619 12.5244 5.4259 12.4975C5.37826 12.4602 5.34098 12.4312 5.30164 12.4022C3.97827 11.4123 3.14365 10.1075 2.80194 8.49216C2.19928 5.61139 3.61584 2.67265 6.25015 1.35549C7.02471 0.968213 7.84897 0.759042 8.71671 0.721764C8.76849 0.719693 8.82026 0.709338 8.87204 0.703125C8.96316 0.703125 9.05429 0.703125 9.14334 0.703125ZM9.02322 11.7913C9.21583 11.7747 9.42707 11.7685 9.63624 11.7374C10.7359 11.5697 11.6575 11.0664 12.3907 10.2277C13.1134 9.39925 13.4862 8.42795 13.5318 7.3324C13.5629 6.55784 13.4034 5.81849 13.0617 5.12264C12.5646 4.10785 11.8025 3.35608 10.7608 2.91909C9.34216 2.32679 7.95252 2.42205 6.64779 3.2401C5.30371 4.083 4.59335 5.33388 4.48773 6.90991C4.41318 8.02825 4.72383 9.0534 5.40104 9.95221C6.30193 11.143 7.51346 11.7436 9.02322 11.7913Z"
+                    fill="currentColor"></path>
+            </svg>
+            <span>Войти</span></a></div>
+      </div>
     </div>
-<script type="text/javascript" src="assets/js/app.js"></script></body>
+  </div>
+  <div class="alt-header__drop">
+    <div class="container-new container-new--header-drop">
+      <div class="container-new__inner container-new__inner--header">
+        <div class="alt-header-drop">
+          <div class="alt-header-drop__menus">
+            <div class="alt-header-drop__menu">
+              <div class="alt-header-drop__title">Вдохновляйся</div>
+              <ul class="alt-header-drop__list">
+                <li><a href="http://travelask.ru/blog">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--blog">
+                      <path d="M10 16.625C6.25515 14.9649 4.30695 15.018 1 16.625V2.12501C4.5 0.625 6.5 0.624998 10 2.12501M10 16.625C13.5 15.125 15.5 15.125 19 16.625V2.12501C15.5 0.625 13.5169 0.657034 10 2.12501M10 16.625V2.12501"
+                            stroke="currentColor" stroke-width="1.6"></path>
+                    </svg>
+                  </div>
+                  <span>Журнал</span></a></li>
+                <li><a href="http://travelask.ru/gallery/">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 16" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--photo">
+                      <path d="M4.72549 15H3C1.89543 15 1 14.1046 1 13V4.74286C1 3.63829 1.89543 2.74286 3 2.74286H4.84292C5.41938 2.74286 5.9685 2.489 6.44393 2.163C7.18342 1.65593 8.52225 1 10.5 1C12.4778 1 13.8166 1.65593 14.5561 2.163C15.0315 2.489 15.5806 2.74286 16.1571 2.74286H18C19.1046 2.74286 20 3.63829 20 4.74286V13C20 14.1046 19.1046 15 18 15H16.0882"
+                            stroke="currentColor" stroke-width="1.6"></path>
+                      <circle cx="10.5" cy="10.5" r="4.5" stroke="currentColor" stroke-width="1.6"></circle>
+                    </svg>
+                  </div>
+                  <span>Фото дня</span></a></li>
+              </ul>
+            </div>
+            <div class="alt-header-drop__menu">
+              <div class="alt-header-drop__title">Планируй</div>
+              <ul class="alt-header-drop__list">
+                <li><a href="http://travelask.ru/guide">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 21" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--guide">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M11.9089 7.13565C11.9089 9.01883 10.383 10.5447 8.49979 10.5447C6.61661 10.5447 5.0907 9.01883 5.0907 7.13565C5.0907 5.25247 6.61661 3.72656 8.49979 3.72656C10.383 3.72656 11.9089 5.25247 11.9089 7.13565Z"
+                            stroke="currentColor" stroke-width="1.6"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M16 8.5C16 13.9545 8.5 20.0909 8.5 20.0909C8.5 20.0909 1 13.9545 1 8.5C1 4.35864 4.35727 1 8.5 1C12.6427 1 16 4.35864 16 8.5Z"
+                            stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <span>Путеводитель</span></a></li>
+                <li><a href="http://travelask.ru/reviews/last">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 21" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--reviews">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M10.9993 1C5.84468 1 1.66602 5.17867 1.66602 10.3333C1.66602 12.0267 2.12335 13.6107 2.91268 14.9787L1.66602 18.3333L5.34202 17.7453C6.91268 18.9453 8.86868 19.6667 10.9993 19.6667C16.154 19.6667 20.3327 15.488 20.3327 10.3333C20.3327 5.17867 16.154 1 10.9993 1Z"
+                            stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M15.7735 10.301L13.1082 8.89564L12.7428 5.80897C12.7268 5.6703 12.6015 5.57164 12.4628 5.58764C12.4068 5.59297 12.3548 5.6183 12.3148 5.6583L10.0788 7.82097L7.1215 7.22764C6.95883 7.1943 6.8015 7.29964 6.7695 7.4623C6.75617 7.5263 6.7655 7.5943 6.7935 7.65297L8.1295 10.365L6.63483 13.0436C6.56017 13.1756 6.60683 13.3423 6.73883 13.4156C6.79217 13.4463 6.8535 13.457 6.91217 13.449L9.94417 13.009L12.0268 15.2623C12.1322 15.3703 12.3042 15.3743 12.4135 15.2703C12.4548 15.229 12.4828 15.177 12.4935 15.121L13.0202 12.0996L15.7602 10.8356C15.9095 10.7663 15.9748 10.589 15.9055 10.4396C15.8775 10.3796 15.8308 10.3316 15.7735 10.301Z"
+                            stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <span>Отзывы</span></a></li>
+                <li><a href="http://travelask.ru/questions">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 21" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--qa">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M8.5 5C4.35786 5 1 8.35786 1 12.5C1 13.8607 1.3675 15.1336 2.00179 16.2329L1 18.9286L3.95393 18.4561C5.21607 19.4204 6.78786 20 8.5 20C12.6421 20 16 16.6421 16 12.5C16 8.35786 12.6421 5 8.5 5Z"
+                            stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M9.49265 10.4632C9.49265 9.88725 9.00245 9.40931 8.34069 9.40931C7.66667 9.40931 7.22549 9.67892 6.83333 10.1936L6 9.25C6.44118 8.53922 7.32353 8 8.42647 8C10.0564 8 11 8.98039 11 10.1569C11 12.5588 8.52451 12.4975 8.78186 14.0417L7.4951 14.0539C7.13971 11.8971 9.49265 12.0809 9.49265 10.4632ZM7.22562 15.7941C7.22562 15.3652 7.59327 14.8872 8.19376 14.8872C8.73297 14.8872 9.10062 15.3652 9.10062 15.7941C9.10062 16.2965 8.73297 16.7745 8.19376 16.7745C7.59327 16.7745 7.22562 16.2965 7.22562 15.7941Z"
+                            fill="currentColor"></path>
+                      <path d="M14 4.00011C17.0709 2.89548 20.4558 4.48943 21.5604 7.5603C21.9233 8.5691 21.9903 9.61076 21.8132 10.5949L23.2748 12.3263L20.9588 12.7637C20.2803 13.8152 19.2696 14.6641 18.0002 15.1207"
+                            stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <span>Вопросы и ответы</span></a></li>
+              </ul>
+            </div>
+            <div class="alt-header-drop__menu">
+              <div class="alt-header-drop__title">Бронируй</div>
+              <ul class="alt-header-drop__list">
+                <li><a href="http://travelask.ru/flights">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 19" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--avia">
+                      <path d="M10.2998 6.44231L6.38412 8.2107L1.97893 6.7423L1 9.18963L4.91572 14.0843L12.7472 10.1686L11.7682 18C14.2156 18 15.3809 12.4959 17.1524 8.2107L23.5154 4.78444C25.9627 3.31605 24.0049 -0.110214 21.5575 1.35818L13.9708 4.78444M10.2998 6.44231L4.91572 2.82658C6.38412 0.868716 10.4261 3.38924 13.9708 4.78444M10.2998 6.44231L13.9708 4.78444"
+                            stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <span>Авиа</span></a></li>
+                <li><a href="http://travelask.ru/hotels">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 17" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--hotels">
+                      <path d="M21 13.1935H1V9.24609H21V13.1935Z" stroke="currentColor" stroke-width="1.6"></path>
+                      <path d="M2.21228 7.57895V1H19.788V7.57895" stroke="currentColor" stroke-width="1.6"></path>
+                      <path d="M2.21228 16H19.788" stroke="currentColor" stroke-width="1.6"></path>
+                      <path d="M4.0708 6.83203H10.2122" stroke="currentColor" stroke-width="1.6"></path>
+                      <path d="M11.7473 6.83203H17.8887" stroke="currentColor" stroke-width="1.6"></path>
+                    </svg>
+                  </div>
+                  <span>Отели</span></a></li>
+                <li><a href="http://travelask.ru/rent_cars">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--car">
+                      <path d="M2.14282 15.8555C2.14282 17.3793 5.57139 17.3793 5.57139 15.8555" stroke="currentColor"
+                            stroke-width="1.6"></path>
+                      <path d="M11.2858 15.8555C11.2858 17.3793 14.7143 17.3793 14.7143 15.8555" stroke="currentColor"
+                            stroke-width="1.6"></path>
+                      <path d="M2.18857 8.78231H1V13.5714H15.8571V8.78231H14.6686M2.18857 8.78231H14.6686M2.18857 8.78231L2.69332 5.47738M14.6686 8.78231L14.1429 5.57143M2.69332 5.47738L3.37714 1H13.48L14.1429 5.57143M2.69332 5.47738H1.27618M14.1429 5.57143H15.56"
+                            stroke="currentColor" stroke-width="1.6"></path>
+                    </svg>
+                  </div>
+                  <span>Аренда авто</span></a></li>
+                <li><a href="http://travelask.ru/railway">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 19" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--tickets">
+                      <path d="M16.5713 7.37427C14.8652 8.14673 13.7666 5.07575 15.4727 4.3033L14.6488 2.00007L1 8.17969L1.82395 10.4829C3.53004 9.71046 4.62864 12.7814 2.92255 13.5539L3.74649 15.8571L4.95061 15.3119"
+                            stroke="currentColor" stroke-width="1.6"></path>
+                      <path d="M22.3332 9.72266H7.62061V12.2054C9.45968 12.2054 9.45968 15.5158 7.62061 15.5158V17.9985H22.3332V15.5158C20.4942 15.5158 20.4942 12.2054 22.3332 12.2054V9.72266Z"
+                            stroke="currentColor" stroke-width="1.6"></path>
+                    </svg>
+                  </div>
+                  <span>Ж/Д билеты</span></a></li>
+                <li><a href="http://travelask.ru/bus">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 20" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--bus">
+                      <path d="M2.46154 11V16H14.3974V11M2.46154 11H14.3974M2.46154 11V7.73469M14.3974 11V7.73469M2.46154 3.7551V1H14.3974V3.7551M2.46154 3.7551H1V7.73469H2.46154M2.46154 3.7551V7.73469M14.3974 3.7551H16V7.73469H14.3974M14.3974 3.7551V7.73469"
+                            stroke="currentColor" stroke-width="1.6"></path>
+                      <path d="M3 18C3 19.3333 6 19.3333 6 18" stroke="currentColor" stroke-width="1.6"></path>
+                      <path d="M11 18C11 19.3333 14 19.3333 14 18" stroke="currentColor" stroke-width="1.6"></path>
+                    </svg>
+                  </div>
+                  <span>Автобусы</span></a></li>
+              </ul>
+            </div>
+            <div class="alt-header-drop__menu">
+              <div class="alt-header-drop__title">Экономь</div>
+              <ul class="alt-header-drop__list">
+                <li><a href="http://booking.travelask.ru">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--cash">
+                      <path d="M7.00013 7.03707C6.99805 6.91803 7.02024 6.79977 7.06543 6.6892C7.11062 6.57862 7.17789 6.47795 7.26332 6.39305C7.34875 6.30815 7.45063 6.24072 7.56302 6.1947C7.6754 6.14868 7.79605 6.12498 7.9179 6.125H10.176C10.9169 6.14228 11.701 6.3535 12.2257 6.89306C13.0334 7.70721 12.9843 9.155 12.153 9.93651C12.0547 10.0268 11.9565 10.1074 11.8504 10.1919C12.2958 10.3858 12.6633 10.7178 12.8959 11.1366C13.0892 11.5274 13.1767 11.9601 13.1502 12.3934C13.1238 12.8267 12.9841 13.2461 12.7445 13.6117C12.2021 14.3989 11.194 14.7311 10.2605 14.7523C9.17762 14.7523 8.09871 14.7523 7.01193 14.7523C7.00407 12.1805 7.00013 9.6088 7.00013 7.03707ZM8.87891 7.68993C8.81641 7.7603 8.76935 7.84244 8.74062 7.93128C8.71189 8.02012 8.7021 8.11377 8.71186 8.20645C8.71186 8.67305 8.71186 9.13772 8.71186 9.6024C9.17566 9.6024 9.63946 9.6024 10.1033 9.6024C10.243 9.60156 10.3808 9.57027 10.5066 9.51081C10.6324 9.45135 10.743 9.36522 10.8304 9.25869C11.1645 8.8113 11.1468 8.07588 10.6692 7.72257C10.341 7.49791 9.91852 7.56896 9.53923 7.55168C9.31716 7.55168 9.05381 7.52287 8.88087 7.68801L8.87891 7.68993ZM8.93 11.0444C8.85159 11.1091 8.79067 11.1916 8.75263 11.2847C8.71458 11.3778 8.70058 11.4786 8.71186 11.5782C8.71186 12.1428 8.71186 12.7073 8.71186 13.2718C9.24444 13.2718 9.77899 13.2718 10.3116 13.2718C10.4965 13.271 10.6779 13.2227 10.8376 13.1317C10.9973 13.0407 11.1297 12.9102 11.2215 12.7534C11.4809 12.2657 11.4298 11.5802 10.9876 11.2173C10.624 10.9196 10.1229 10.9561 9.68073 10.9542C9.43114 10.9638 9.15208 10.9139 8.93 11.054V11.0444Z"
+                            fill="currentColor"></path>
+                      <path d="M14.7931 12.7945C15.0049 12.7383 15.2291 12.7468 15.4357 12.8188C15.6423 12.8908 15.8215 13.0229 15.9491 13.1972C16.0767 13.3716 16.1466 13.5799 16.1495 13.7942C16.1524 14.0085 16.0882 14.2186 15.9653 14.3962C15.8425 14.5738 15.667 14.7104 15.4624 14.7877C15.2579 14.8651 15.0339 14.8794 14.8208 14.8288C14.6076 14.7781 14.4154 14.665 14.2699 14.5046C14.1245 14.3441 14.0327 14.1441 14.007 13.9312C13.9777 13.6812 14.0408 13.4293 14.1849 13.2208C14.3291 13.0123 14.5448 12.8611 14.7931 12.7945Z"
+                            fill="currentColor"></path>
+                      <path d="M1 5C1 2.79086 2.79086 1 5 1H16C18.2091 1 20 2.79086 20 5V16C20 18.2091 18.2091 20 16 20H1V5Z"
+                            stroke="currentColor" stroke-width="1.6"></path>
+                    </svg>
+                  </div>
+                  <span>Букинг кеш бек</span></a></li>
+                <li><a href="http://travelask.ru/offers">
+                  <div class="alt-header-drop__icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 21" fill="none"
+                         class="alt-header-drop__icon alt-header-drop__icon--hot-avia">
+                      <path d="M17.2998 6.44231L13.3841 8.2107L8.97893 6.7423L8 9.18963L11.9157 14.0843L19.7472 10.1686L18.7682 18C21.2156 18 22.3809 12.4959 24.1524 8.2107L30.5154 4.78444C32.9627 3.31605 31.0049 -0.110214 28.5575 1.35818L20.9708 4.78444M17.2998 6.44231L11.9157 2.82658C13.3841 0.868716 17.4261 3.38924 20.9708 4.78444M17.2998 6.44231L20.9708 4.78444"
+                            stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+                      <path d="M5.5 10.5L2.5 12M8 14L1 17.5M12 17L7 20" stroke="currentColor" stroke-width="1.6"></path>
+                    </svg>
+                  </div>
+                  <span>Горящие билеты</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="alt-header-drop__actions"><a class="alt-header-drop__action"
+                                                   href="http://travelask.ru/questions/new">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50"
+                 viewBox="0 0 50 50" class="actions-links__img">
+              <defs>
+                <path id="8ntba" d="M80 276a25 25 0 1 1-50 0 25 25 0 0 1 50 0z"></path>
+                <path id="8ntbc"
+                      d="M31.88 283.5h9.95c.83 0 1.5.65 1.5 1.46 0 .8-.67 1.46-1.5 1.46h-3.86c-.84 0-1.5.65-1.5 1.46 0 .8-.68 1.45-1.51 1.45h-1.11a24.88 24.88 0 0 1-2.78-6.06c.23.15.51.23.81.23z"></path>
+                <path id="8ntbd"
+                      d="M68.83 263.08c-.84 0-1.51-.65-1.51-1.45 0-.81-.68-1.46-1.51-1.46h-3.88c-.83 0-1.51-.66-1.51-1.46 0-.8.68-1.46 1.51-1.46h9.61a25.12 25.12 0 0 1 4.87 5.83z"></path>
+                <path id="8ntbf"
+                      d="M48.25 256c2.82 0 5.1 2.3 5.1 5.13v6.84h-10.2v-6.84a5.12 5.12 0 0 1 5.1-5.13z"></path>
+                <path id="8ntbg" d="M41.34 276.35h-11.1l-5.11-8.38h16.21z"></path>
+                <path id="8ntbh" d="M28.74 273.96l1.53 2.4h11.08v-2.4z"></path>
+                <path id="8ntbi" d="M55.76 276.35h11.1l5.11-8.38H55.76z"></path>
+                <path id="8ntbj" d="M55.76 273.96v2.4h11.08l1.53-2.4z"></path>
+                <path id="8ntbk" d="M41.35 267.97h13.81v35.74H41.35z"></path>
+                <path id="8ntbl" d="M46.15 261.99h5.4v5.99h-5.4z"></path>
+                <path id="8ntbm" d="M46.15 261.99v3.03a3.75 3.75 0 0 0 5.4 0V262z"></path>
+                <path id="8ntbn"
+                      d="M55.41 267.97l-.37.6a7.61 7.61 0 0 1-6.5 3.59 7.61 7.61 0 0 1-6.49-3.6l-.36-.59h-5.15l1.62 2.63a12.18 12.18 0 0 0 10.39 5.75c4.26 0 8.2-2.18 10.4-5.75l1.6-2.63z"></path>
+                <path id="8ntbo" d="M23.33 267.97v3.6h3.6l-1.96-3.6z"></path>
+                <path id="8ntbp" d="M73.77 267.97v3.6h-4.02l1.97-3.6z"></path>
+                <path id="8ntbq" d="M47.65 287.96h1.8v16.25h-1.8z"></path>
+                <path id="8ntbr" d="M44.35 285.56h1.8v18.64h-1.8z"></path>
+                <path id="8ntbs" d="M50.95 289.84h1.8v14.37h-1.8z"></path>
+                <path id="8ntbt"
+                      d="M36.13 276.83a.9.9 0 0 1-.76-.43l-4.82-7.83a.86.86 0 0 1 .3-1.2.9.9 0 0 1 1.22.3l4.83 7.84c.25.4.12.94-.3 1.2a.9.9 0 0 1-.47.12z"></path>
+                <path id="8ntbu"
+                      d="M60.9 276.83a.9.9 0 0 1-.46-.13.86.86 0 0 1-.31-1.2l4.8-7.82a.92.92 0 0 1 1.24-.3c.42.24.56.78.3 1.2l-4.8 7.82a.9.9 0 0 1-.77.43z"></path>
+                <path id="8ntbv"
+                      d="M55.5 292.15a.86.86 0 0 1-.32-.06l-1.25-.5a33.63 33.63 0 0 1-13-9.39.88.88 0 0 1 .15-1.23.86.86 0 0 1 1.18.1 31.89 31.89 0 0 0 12.32 8.9l1.25.5a.88.88 0 0 1-.33 1.68z"></path>
+                <path id="8ntbw"
+                      d="M48.55 256c2 0 3.6 1.5 3.6 3.35v1.68c0 1.85-1.6 3.35-3.6 3.35-1.99 0-3.6-1.5-3.6-3.35v-1.68c0-1.85 1.61-3.35 3.6-3.35z"></path>
+                <path id="8ntbx"
+                      d="M46.15 263.28a3.88 3.88 0 0 0 5.4 0c0-.71-.65-1.29-1.46-1.29h-2.48c-.8 0-1.46.58-1.46 1.3z"></path>
+                <path id="8ntby" d="M55.75 281.14l-5.4-2.63v-10.54h5.4z"></path>
+                <path id="8ntbz" d="M57.56 267.97h-1.8v6.58c.65-.43 1.25-.93 1.8-1.47z"></path>
+                <path id="8ntbA"
+                      d="M68.93 285.72a16 16 0 1 0-4.31 4.92l6.05.97c.1.02.2-.02.26-.1a.29.29 0 0 0 .05-.28z"></path>
+                <path id="8ntbB"
+                      d="M68.93 282.86a16 16 0 1 0-4.31 4.92l6.05.97c.1.02.2-.02.26-.1a.29.29 0 0 0 .05-.28z"></path>
+                <path id="8ntbC"
+                      d="M53.14 280.97c0-.66.58-1.4 1.53-1.4.85 0 1.44.74 1.44 1.4 0 .77-.59 1.5-1.44 1.5-.95 0-1.53-.73-1.53-1.5zm3.59-8.17c0-.89-.78-1.62-1.83-1.62a2.8 2.8 0 0 0-2.38 1.2l-1.32-1.44a4.5 4.5 0 0 1 3.84-1.92c2.58 0 4.07 1.5 4.07 3.3 0 3.69-3.92 3.6-3.5 5.96l-2.04.02c-.57-3.3 3.16-3.02 3.16-5.5z"></path>
+                <linearGradient id="8ntbb" x1="55" x2="55" y1="251" y2="301" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#e1f3ff"></stop>
+                  <stop offset="1" stop-color="#4cbbff"></stop>
+                </linearGradient>
+                <clipPath id="8ntbe">
+                  <use xlink:href="#8ntba"></use>
+                </clipPath>
+              </defs>
+              <g>
+                <g transform="translate(-30 -251)">
+                  <g>
+                    <g>
+                      <use fill="url(#8ntbb)" xlink:href="#8ntba"></use>
+                    </g>
+                    <g>
+                      <g>
+                        <use fill="#fff" xlink:href="#8ntbc"></use>
+                      </g>
+                      <g>
+                        <use fill="#fff" xlink:href="#8ntbd"></use>
+                      </g>
+                      <g>
+                        <g></g>
+                        <g clip-path="url(#8ntbe)">
+                          <g>
+                            <use fill="#b9c2ce" xlink:href="#8ntbf"></use>
+                          </g>
+                          <g>
+                            <use fill="#a7afba" xlink:href="#8ntbg"></use>
+                          </g>
+                          <g opacity=".5">
+                            <use fill="#818fa2" xlink:href="#8ntbh"></use>
+                          </g>
+                          <g>
+                            <use fill="#a7afba" xlink:href="#8ntbi"></use>
+                          </g>
+                          <g opacity=".6">
+                            <use fill="#818fa2" xlink:href="#8ntbj"></use>
+                          </g>
+                          <g>
+                            <use fill="#a7afba" xlink:href="#8ntbk"></use>
+                          </g>
+                          <g>
+                            <use fill="#c3c9d1" xlink:href="#8ntbl"></use>
+                          </g>
+                          <g opacity=".7">
+                            <use fill="#818fa2" xlink:href="#8ntbm"></use>
+                          </g>
+                          <g>
+                            <use fill="#b9c2ce" xlink:href="#8ntbn"></use>
+                          </g>
+                          <g>
+                            <use fill="#d0d7df" xlink:href="#8ntbo"></use>
+                          </g>
+                          <g>
+                            <use fill="#b9c2ce" xlink:href="#8ntbp"></use>
+                          </g>
+                          <g opacity=".7">
+                            <use fill="#818fa2" xlink:href="#8ntbq"></use>
+                          </g>
+                          <g opacity=".7">
+                            <use fill="#818fa2" xlink:href="#8ntbr"></use>
+                          </g>
+                          <g opacity=".7">
+                            <use fill="#818fa2" xlink:href="#8ntbs"></use>
+                          </g>
+                          <g>
+                            <use fill="#b9c2ce" xlink:href="#8ntbt"></use>
+                          </g>
+                          <g>
+                            <use fill="#b9c2ce" xlink:href="#8ntbu"></use>
+                          </g>
+                          <g>
+                            <use fill="#b9c2ce" xlink:href="#8ntbv"></use>
+                          </g>
+                          <g>
+                            <use fill="#a7afba" xlink:href="#8ntbw"></use>
+                          </g>
+                          <g>
+                            <use fill="#b9c2ce" xlink:href="#8ntbx"></use>
+                          </g>
+                          <g>
+                            <use fill="#d0d7df" xlink:href="#8ntby"></use>
+                          </g>
+                          <g>
+                            <use fill="#8f9cab" xlink:href="#8ntbz"></use>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <use fill="#1f1501" fill-opacity=".1" xlink:href="#8ntbA"></use>
+                    </g>
+                    <g>
+                      <use fill="#fff" xlink:href="#8ntbB"></use>
+                    </g>
+                    <g>
+                      <use fill="#212121" xlink:href="#8ntbC"></use>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <div class="alt-header-drop__label">Задать вопрос</div>
+          </a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(window).on("load", function () {
+    var $altHeader = $('.alt-header');
+    var $roots = $('html, body');
+
+    if ($altHeader.length) {
+
+      var $altHeaderDrop = $altHeader.find('.alt-header__drop');
+      var $altHeaderDropBtn = $altHeader.find('.alt-header__drop-btn');
+
+      $altHeaderDropBtn.on('click', function (e) {
+        e.stopPropagation();
+        $altHeader.toggleClass('is-open');
+        if (window.innerWidth <= 991) {
+          $roots.toggleClass('limited')
+        }
+      });
+
+      $(document).on('click', function (e) {
+        if (!$(e.target).closest($altHeaderDrop).length && $altHeader.hasClass('is-open')) {
+          $altHeader.removeClass('is-open');
+          if (window.innerWidth <= 991) {
+            $roots.removeClass('limited')
+          }
+        }
+      });
+
+      $(window).on('resize.alt-header', function () {
+        if ($altHeader.hasClass('is-open')) {
+          window.innerWidth <= 991 ? $roots.addClass('limited') : $roots.removeClass('limited')
+        }
+      }).trigger('resize.alt-header')
+    }
+  })
+</script>
+<div class="content"></div>
+<!-- Код footer -->
+<footer class="footer">
+  <div class="footer__middle">
+    <div class="container-new">
+      <div class="container-new__inner clearfix">
+        <div class="footer__middle-col">
+          <div class="footer__middle-menu clearfix">
+            <div class="footer__middle-header">О проекте</div>
+            <ul class="footer__middle-list">
+              <li><a href="http://travelask.ru/advertising">Реклама на сайте</a></li>
+              <li><a href="http://travelask.ru/contact">Связаться с нами</a></li>
+              <li><a href="http://travelask.ru/guide#alphabetical">Карта сайта</a></li>
+              <li><a href="http://travelask.ru/rules">Правила проекта</a></li>
+              <li><a href="http://travelask.ru/terms">Пользовательское соглашение</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__middle-col">
+          <div class="footer-middle__menu clearfix">
+            <div class="footer__middle-header">Разделы</div>
+            <ul class="footer__middle-list">
+              <li><a href="http://travelask.ru/blog">Журнал</a></li>
+              <li><a href="http://travelask.ru/questions">Вопросы и ответы</a></li>
+              <li><a href="http://travelask.ru/guide">Путеводитель</a></li>
+              <li><a href="http://travelask.ru/reviews/last">Отзывы и истории</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__middle-col">
+          <div class="footer-middle__menu clearfix">
+            <div class="footer__middle-header">Сервисы</div>
+            <ul class="footer__middle-list">
+              <li><a href="http://fly.travelask.ru/?utm_source=top">Авиабилеты</a></li>
+              <li><a href="http://booking.travelask.ru">Отели</a></li>
+              <li><a href="http://aparts.travelask.ru">Апартаменты и виллы</a></li>
+              <li><a href="http://cars.travelask.ru">Аренда авто</a></li>
+              <li><a href="http://erv.travelask.ru">Страховки</a></li>
+              <li><a href="http://locals.travelask.ru">Гиды</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__middle-col">
+          <div class="footer-middle__menu clearfix">
+            <div class="footer__middle-header">Разное</div>
+            <ul class="footer__middle-list">
+              <li><a href="http://travelask.ru/user_ratings">Рейтинг пользователей</a></li>
+              <li><a href="http://travelask.ru/guide">Страны и города</a></li>
+              <li><a href="http://travelask.ru/contests">Конкурсы</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__middle-col footer__middle-col--subs">
+          <div class="footer-middle__menu footer-middle__menu--subs clearfix">
+            <div class="footer__middle-header">Подписаться</div>
+            <div class="footer__bottom-socials">
+              <div class="round-social">
+                <div class="round-social__wrap">
+                  <div class="round-social__item">
+                    <a class="round-social__link round-social__link--fb"
+                       href="https://www.facebook.com/travelask"
+                       target="_blank">Facebook</a>
+                  </div>
+                  <div class="round-social__item">
+                    <a class="round-social__link round-social__link--inst"
+                       href="https://instagram.com/travelask/"
+                       target="_blank">Instagram</a>
+                  </div>
+                  <div class="round-social__item">
+                    <a class="round-social__link round-social__link--vk"
+                       href="https://vk.com/travelask" target="_blank">Vkontakte</a>
+                  </div>
+                  <div class="round-social__item">
+                    <a class="round-social__link round-social__link--rss"
+                       href="http://travelask.ru/blog/posts/feed.rss">RSS</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__middle-report-btn">
+            <a class="report-bug js-report-bug"
+               href="http://travelask.ru/contact?type=bug"
+               target="_blank">
+              <img class="report-bug__img" width="20" height="20"
+                   src="http://s2.travelask.ru/assets/exclamation-mark-icon-a5fdaaa0ccbb4d535345a516e83cda39474a7f8563fb8e49b69d7d54e14ce76b.svg"
+                   alt="Exclamation mark icon"/>Сообщить об ошибке</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container-new">
+      <div class="container-new__inner clearfix">
+        <div class="footer__copyright">&copy; 2009-2019 TravelAsk.<br/>При цитировании материалов <a
+                href="http://travelask.ru/">travelask.ru</a> ссылка на сайт обязательна.
+        </div>
+        <div class="footer__bottom-age">12<span>+</span></div>
+      </div>
+    </div>
+    <div class="footer__bottom-liveinternet">
+      <div id="liveinternet_counter"></div>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
+
+
+<!-- Код header -->
